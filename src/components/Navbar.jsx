@@ -6,13 +6,14 @@ import './Navbar.css'; // Kết nối với file CSS
 function Navbar() {
   return (
     <nav className="navbar-container">
-      <div className="logo">
-        <a href="/">WriteAI</a>
+      <div className="Logo">
+            <img src="/Logo/png"></img>
+            <div className="Hamster_English"> Hamster English</div>
+            
       </div>
+      
       <div className="nav-links">
-        <a href="/guide">Hướng dẫn</a>
-        <a href="/about">Giới thiệu</a>
-        <a href="/login" className="login-button">Đăng nhập</a>
+        <a href="/login" className="login-button">Đăng nhập/Đăng kí</a>
       </div>
     </nav>
   );
