@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 
 import React from 'react';
-import './Navbar.css'; // Kết nối với file CSS
+import '../index.css'; // Kết nối với file CSS
 
 function Navbar() {
   return (
