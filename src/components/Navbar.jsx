@@ -1,12 +1,9 @@
 // src/components/Navbar.jsx
 
 import React from 'react';
-// <<<<<<< HEAD
-import '../index.css'; // Kết nối với file CSS
-// =======
 import { Link } from 'react-router-dom'; // <-- BƯỚC 1: IMPORT LINK
-// import './Navbar.css';
-// >>>>>>> 09dffd0cc6c3cd9b89e0919923389e8b6c3812b1
+ import './Navbar.css';
+
 
 function Navbar() {
   return (
