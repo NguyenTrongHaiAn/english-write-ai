@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import LandingPage from './components/landingpage.jsx';
 import AuthPage from './components/AuthPage.jsx'; // Import trang mới
+import Register from './components/register.jsx';
 import './App.css'; 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
           
           {/* Khi URL là "/login", hiển thị AuthPage */}
           <Route path="/login" element={<AuthPage />} />
-          
+          <Route path='/register' element={<Register />} />
           {/* Bạn có thể thêm các route khác ở đây */}
         </Routes>
       </main>

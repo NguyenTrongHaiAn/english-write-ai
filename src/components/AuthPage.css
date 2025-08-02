@@ -7,12 +7,12 @@
   min-width: 95vw;
 }
 .auth-form {
-  background: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.301);
+    width: 400px;
+    text-align: center;
 }
 .auth-form h2 { color: #333; }
 .auth-form p { color: #777; margin-bottom: 30px; }
@@ -33,6 +33,10 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+}
+.auth-button:hover{
+  background-color: #a03c2d;
+  transform: translateY(-2px);  
 }
 .forgot-password, .switch-auth a {
   color: #c23333;

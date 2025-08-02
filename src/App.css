@@ -2,5 +2,5 @@
 .content-wrapper {
   max-width: 1200px; /* Chiều rộng tối đa của nội dung */
   margin: 0 auto;    /* "Phép thuật" để căn giữa theo chiều ngang */
-  padding: 32px;      /* Khoảng đệm xung quanh nội dung */
+    /* Khoảng đệm xung quanh nội dung */
 }

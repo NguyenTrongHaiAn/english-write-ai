@@ -1,19 +1,35 @@
 // src/components/LandingPage.jsx
 
 import React from 'react';
-/* import './LandingPage.css'; // Chúng ta sẽ tạo file này ở bước tiếp theo */
+import './landingpage.css';
 
 function LandingPage() {
+  const title = "Improve your English writing skill";
+
   return (
     <div className="landing-container">
       <div className="landing-content">
-        <h1>Nâng trình Tiếng Anh của bạn với AI</h1>
-        <p>
-          Chấm điểm bài viết IELTS, CV và mọi văn bản khác. Nhận gợi ý chi tiết để viết hay hơn, đúng hơn và chuyên nghiệp hơn.
-        </p>
-        <button className="cta-button">
-          Bắt đầu ngay
-        </button>
+        <h1>
+          {"Improve your English writing skill".split(" ").map((word, i) => (
+          <span key={i} className="word" style={{ animationDelay: `${i * 0.15}s` }}>
+            {word}&nbsp;
+          </span>
+        ))}
+        </h1>
+
+        <p className="slide-in-text">
+Evaluate IELTS essays, CVs, and other written documents with precision. Receive in-depth feedback to improve clarity, accuracy, and professionalism in your writing.        </p>
+
+        <div className="cta-button-wrapper">
+          <button className="cta-button slide-in-text">
+            GET STARTED
+          </button>
+        </div>
+        
+      </div>
+
+      <div className="landing-img">
+        <img src="/assets/landingpage.png" alt="landing" />
       </div>
     </div>
   );

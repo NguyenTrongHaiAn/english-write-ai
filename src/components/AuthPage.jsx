@@ -1,5 +1,5 @@
 // src/components/AuthPage.jsx
-
+import { Link } from 'react-router-dom';
 import React from 'react';
 import './AuthPage.css'; // File CSS để trang trí
 
@@ -7,14 +7,14 @@ function AuthPage() {
   return (
     <div className="auth-container">
       <div className="auth-form">
-        <h2>Chào mừng bạn trở lại!</h2>
-        <p>Đăng nhập để tiếp tục</p>
-        <input type="email" placeholder="Nhập email của bạn" />
-        <input type="password" placeholder="Nhập mật khẩu" />
-        <button className="auth-button">Đăng nhập</button>
-        <a href="#" className="forgot-password">Quên mật khẩu?</a>
+        <h2>WELCOME BACK!</h2>
+        <p>Please log in to continue</p>
+        <input type="email" placeholder="Type your email" />
+        <input type="password" placeholder="Type your pasword" />
+        <button className="auth-button">Log in</button>
+        <a href="#" className="forgot-password">Forgot your pasword?</a>
         <div className="switch-auth">
-          Chưa có tài khoản? <a href="#">Đăng kí ngay</a>
+          Don't have an account? <Link to="/register">Register</Link>
         </div>
       </div>
     </div>
