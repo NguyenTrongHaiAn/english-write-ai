@@ -1,0 +1,75 @@
+/* src/components/Navbar.css */
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c23333;
+  width: 100%;
+  padding: 25px 25px 25px 25px; /* top | right | bottom | left */
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap:25px; 
+}
+
+.Hamster_English {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.8rem; 
+  color: rgb(247, 241, 241);
+  
+}
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 45px; 
+}
+/* Style cho nhóm link bên phải */
+.nav-links a {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative; 
+  /* làm mốc cho dòng kẻ */
+  padding-bottom: 6px; 
+  transition: transform 0.3s ease-in-out;
+  
+}
+.nav-links a:hover {
+  transform: scale(1.2);
+
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transition:transform 0.5s ease-in-out;
+  transform-origin: left; 
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  width: 100%;
+}
+/* Gộp chung trạng thái bình thường (a) và trạng thái đã truy cập (a:visited) */
+
+.nav-links a:visited {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white; 
+}
+.nav-links logout-button:visited {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white; 
+}

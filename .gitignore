@@ -1,24 +1,30 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Thư mục hệ thống và công cụ của Linux/WSL
+.cache/
+.config/
+.local/
+.vscode-server/
+snap/
+.npm/
+.nvm/
+node_modules/
+.bash_history
+.bashrc
+.lesshst
+.motd_shown
+.profile
+.dotnet/
+.wget-hsts
 
-node_modules
-dist
-dist-ssr
-*.local
+# Thư mục chứa thư viện của dự án
+/english-write-ai/node_modules
+/backend_hamster_english/node_modules
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Thư mục build và cache của Frontend
+/english-write-ai/dist
+/english-write-ai/.vite/
+
+# File biến môi trường (Bảo mật!)
+/backend_hamster_english/.env
+
+# File sao lưu (nếu có)
+backend_backup.zip
