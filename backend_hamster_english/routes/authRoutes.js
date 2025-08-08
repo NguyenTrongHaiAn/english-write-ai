@@ -5,7 +5,9 @@ const router = express.Router();
 const {
   registerUser,
   loginUser,
-  forgotPassword  // 👈 thêm hàm forgotPassword
+  // forgotPassword ,
+  // logoutUser, 
+
 } = require('../controllers/authController');
 
 router.post('/register', registerUser);
@@ -14,7 +16,7 @@ router.post('/register', registerUser);
 
 router.post('/login', loginUser);
 
-router.post('/forgot-password', forgotPassword);
+// router.post('/forgot-password', forgotPassword);
 
 module.exports = router;
 // Export the router so it can be used in other files

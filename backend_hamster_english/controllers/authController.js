@@ -93,7 +93,20 @@ const loginUser = async (req, res) => {
          token: token
       });
    }
+   catch (error) {
+      //nếu có lỗi xảy ra trong quá trình đăng nhập, trả về lỗi 500
+      return res.status(500).json({ message: 'Error when logging in user', error: error.message });
+   };
 }
 //trong hệ thống dùng JWT thì logout thường liên quan đến token.
 //NGHIÊN CỨU TOKEN VÀ LÀM
 //LOGOUT NGƯỜI DÙNG
+// ... (code của các hàm registerUser, loginUser, forgotPassword ở trên)
+
+// DÒNG CUỐI CÙNG CỦA FILE
+module.exports = {
+    registerUser,
+    loginUser,
+   //  logouUser,
+   //  forgotPassword,
+};

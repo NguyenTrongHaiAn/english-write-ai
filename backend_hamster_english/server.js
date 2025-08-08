@@ -1,5 +1,5 @@
 const express =require('express');
-
+// const userRoutes = require('./routes/userRoutes');
 const cors = require('cors');
 
 //use dotnev library in current file
@@ -19,6 +19,8 @@ app.use(express.json());
 //Middleware helps parse JSON in request body into req.body
 
 app.use('/api/auth', authRoutes);
+
+
 //When there is a request to a path starting with /api/auth, then pass the further processing to the router authRoutes
 const PORT = process.env.PORT || 3001;
 // auto take port from .env file or use 3001 as default
