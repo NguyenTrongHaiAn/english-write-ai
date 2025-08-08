@@ -22,7 +22,7 @@ function LandingPage() {
 Evaluate IELTS essays, CVs, and other written documents with precision. Receive in-depth feedback to improve clarity, accuracy, and professionalism in your writing.        </p>
 
         <div className="cta-button-wrapper">
-          <Link to="/getstart"><button className="cta-button slide-in-text">
+          <Link to="/skills"><button className="cta-button slide-in-text">
             GET STARTED
           </button></Link>
           

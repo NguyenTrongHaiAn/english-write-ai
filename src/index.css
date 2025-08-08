@@ -22,12 +22,11 @@ a:hover {
   color: #535bf2;
 }
 
+/* ĐỂ LẠI NHƯ THẾ NÀY */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* Bạn có thể giữ lại min-height nếu muốn */
+  min-height: 100vh; 
 }
 
 h1 {
