@@ -1,0 +1,132 @@
+.landing-container {
+  /* THAY ĐỔI 1: Chuyển sang dùng display: grid */
+  display: grid;
+  
+  /* THAY ĐỔI 2: Định nghĩa 2 cột lưới */
+  /* Cột 1 chiếm hết phần còn lại (1fr), Cột 2 có chiều rộng tự động theo ảnh (auto) */
+  grid-template-columns: 1fr auto; 
+
+  align-items: center; /* Giữ nguyên để căn giữa theo chiều dọc */
+  background-color: #ffffff;
+  
+  width: 100%; /* Giữ lại để container chiếm hết chiều rộng */
+  position: fixed; /* Đổi lại thành fixed để nó luôn ở trên top */
+  top: 0;
+  left: 0; /* Thêm left: 0 và right: 0 để đảm bảo grid hoạt động đúng với position fixed */
+  right: 0;
+
+  box-sizing: border-box;
+  z-index: 1;
+  padding-top:79px;
+
+  /* Bạn có thể thêm padding hai bên để có khoảng lề an toàn trên màn hình nhỏ */
+  padding-left: 20px;
+
+}
+
+
+.landing-content{
+    flex-direction: column;
+    display: flex;
+    width: 350px;
+    margin: 0;
+
+    /* THAY ĐỔI 3: Thêm dòng này để tự căn giữa trong cột lưới của nó */
+    justify-self: center;
+}
+
+.landing-content h1{
+    text-align: left;
+    font-size: 55px;
+    margin-bottom: 10px;  
+    font-weight: 800;
+}
+.char {
+  display: inline; /* Sửa từ inline-block → inline */
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDown 0.5s forwards;
+}
+.landing-content h1 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideDown 0.5s forwards;
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.landing-content p,
+.cta-button-wrapper{
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 0.6s forwards;
+}
+
+.landing-content p {
+    padding-bottom: 10px;
+  animation-delay: 1s;
+}
+.cta-button-wrapper {
+  animation-delay: 1.3s;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+.landing-img{
+    height: 650px;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 0;
+
+}
+.landing-img img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.cta-button-wrapper{
+    padding: 0;
+}
+
+.cta-button {
+  display: inline-block; /* Quan trọng: Giúp padding và transform hoạt động đúng */
+  padding: 10px 30px;   /* Thêm padding để nút trông lớn và dễ bấm hơn */
+  background-color: #c24a3a;
+  color: white;
+  border: none;
+  width: 350px;
+  border-radius: 10px; /* Điều chỉnh: Bo góc nhỏ hơn để hiện đại, đồng bộ với form */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none; /* Dành cho trường hợp nút là thẻ <a> */
+  cursor: pointer;
+  
+  /* Quan trọng nhất: Thêm transform và box-shadow vào transition */
+  transition: background-color 0.3s ease, 
+              transform 0.2s ease, 
+              box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #a03c2d; /* Điều chỉnh: Màu tối hơn một chút, giống form đăng ký */
+  color: white; /* Giữ màu trắng cho nhất quán */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Điều chỉnh: Giảm độ đậm của bóng */
+  
+  /* Hiệu ứng "nhấc" nút lên */
+   transform: translateX(0) translateY(-2px);
+}

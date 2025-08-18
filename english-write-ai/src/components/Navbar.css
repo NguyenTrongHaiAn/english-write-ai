@@ -4,12 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #c23333;
+  background-color: #c24a3a;
   width: 100%;
-  padding: 25px 25px 25px 25px; /* top | right | bottom | left */
+  padding: 0px 25px 0px 15px; /* top | right | bottom | left */
   position: fixed;
   top: 0;
   box-sizing: border-box;
+  z-index: 10;
   
 }
 
@@ -18,12 +19,19 @@
   align-items: center;
   gap:25px; 
 }
+.logo-image {
+  height: 60px;
+  object-fit: contain;
+}
 
 .Hamster_English {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1.8rem; 
   color: rgb(247, 241, 241);
   
+}
+.Hamster_English:hover{
+  color: rgb(206, 150, 46);
 }
 .nav-links{
   display: flex;
@@ -33,7 +41,7 @@
 /* Style cho nhóm link bên phải */
 .nav-links a {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 1.1rem;
+  font-size: 20px;
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -54,7 +62,7 @@
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: white;
+  background-color: none;
   transform: scaleX(0);
   transition:transform 0.5s ease-in-out;
   transform-origin: left; 
