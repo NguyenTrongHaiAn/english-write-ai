@@ -8,10 +8,9 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
 //Load the auth.js file in the routes folder
-
+const userRoutes = require('./routes/userRoutes');
 // create Express app .The app variable is the object that represents the web server.
 const app = express();
-
 app.use(cors());
 // Use the cors middleware to allow cross-origin requests
 app.use(express.json());
@@ -19,7 +18,7 @@ app.use(express.json());
 //Middleware helps parse JSON in request body into req.body
 
 app.use('/api/auth', authRoutes);
-
+app.use('/api/user', userRoutes); 
 
 //When there is a request to a path starting with /api/auth, then pass the further processing to the router authRoutes
 const PORT = process.env.PORT || 3001;
