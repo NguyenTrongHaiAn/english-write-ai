@@ -1,5 +1,4 @@
 .landing-container {
-<<<<<<< HEAD
   /* THAY ĐỔI 1: Chuyển sang dùng display: grid */
   display: grid;
   
@@ -23,24 +22,6 @@
   /* Bạn có thể thêm padding hai bên để có khoảng lề an toàn trên màn hình nhỏ */
   padding-left: 20px;
 
-=======
-  /* display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  height: 100vh;
-  width: 1200px;
-  background-color: #1f1212; */
-    display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  box-sizing: border-box;
-  z-index: 1;
-  padding-top:79px;
->>>>>>> d90d751d45a1aadbefd0c0b038732c854d0d40aa
 }
 
 
@@ -48,14 +29,11 @@
     flex-direction: column;
     display: flex;
     width: 350px;
-<<<<<<< HEAD
     margin: 0;
 
     /* THAY ĐỔI 3: Thêm dòng này để tự căn giữa trong cột lưới của nó */
     justify-self: center;
-=======
-    padding-left: 100px;
->>>>>>> d90d751d45a1aadbefd0c0b038732c854d0d40aa
+
 }
 
 .landing-content h1{

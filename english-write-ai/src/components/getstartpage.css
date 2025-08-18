@@ -11,7 +11,6 @@
 }
 
 .homepage-container {
-<<<<<<< HEAD
     position: relative;
   /* Đây là 3 dòng quan trọng nhất */
   max-width: 1200px; /* Chiều rộng tối đa cho nội dung, bạn có thể thay đổi số này */
@@ -21,17 +20,7 @@
   /* Thêm padding để nội dung không dính vào lề trên màn hình nhỏ */
   padding-left: 20px;
   padding-right: 20px;
-=======
-    width: 100%;
-    color: var(--text-dark);
-}
 
-.home-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 20px;
-    border-bottom: 1px solid var(--border-color);
->>>>>>> d90d751d45a1aadbefd0c0b038732c854d0d40aa
 }
 
 h2 {

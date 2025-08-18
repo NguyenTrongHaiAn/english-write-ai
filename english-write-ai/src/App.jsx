@@ -52,8 +52,7 @@ function App() {
               }
             />
 
-              <Route index element={<Getstartpage />} />
-
+            <Route path="/skills" element={<Getstartpage />} />
             {/* --- THÊM VÀO (Tùy chọn): Route để xử lý các đường dẫn không hợp lệ --- */}
             {/* Nếu người dùng truy cập một URL không tồn tại, họ sẽ được điều hướng về trang chủ. */}
             <Route path="*" element={<Navigate to="/" />} />
