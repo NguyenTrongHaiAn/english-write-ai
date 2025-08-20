@@ -1,21 +1,18 @@
 // src/App.jsx
-
-// --- THÊM VÀO: Import các công cụ cần thiết từ React Router và Context ---
 import {  Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/Authpage.jsx'; // Import AuthProvider để bọc ứng dụng
+import { AuthProvider, useAuth } from './context/AuthContext.jsx'; // Import AuthProvider để bọc ứng dụng
 
-// --- GIỮ NGUYÊN: Import các component Navbar và Trang của bạn ---
+
 import Navbar from './components/Navbar.jsx';
 import LandingPage from './components/landingpage.jsx';
 import AuthPage from './components/AuthPage.jsx';
-
+import WritingPage from './components/WritingPage.jsx'; 
 // --- THÊM VÀO: Import trang cá nhân (ProfilePage) ---
 import ProfilePage from './pages/ProfilePage.jsx';
 
 
 import Getstartpage from './components/getstartpage.jsx'; // Trang chủ của layout
 
-// --- GIỮ NGUYÊN: Import file CSS của bạn ---
 import './App.css';
 
 // --- THÊM VÀO: Component để bảo vệ các route yêu cầu đăng nhập ---
@@ -41,6 +38,7 @@ function App() {
             {/* ---- GIỮ NGUYÊN: CÁC ROUTE CƠ BẢN CỦA BẠN ---- */}
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<AuthPage />} />
+            <Route path="/writing/:challengeId" element={<WritingPage />} />
 
             {/* ---- THÊM VÀO: ROUTE CHO TRANG CÁ NHÂN ĐƯỢC BẢO VỆ ---- */}
             <Route

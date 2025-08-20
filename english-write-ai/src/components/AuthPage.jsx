@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import './AuthPage.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Dùng để chuyển trang sau khi đăng nhập
-import { useAuth } from '../context/Authpage.jsx'; // Dùng context để quản lý trạng thái đăng nhập
+import { useAuth } from '../context/AuthContext.jsx'; // Dùng context để quản lý trạng thái đăng nhập
 
 // URL của API backend
 const API_URL = 'http://localhost:3001/api/auth';
@@ -17,15 +17,16 @@ function AuthPage() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: '' // Chỉ dùng trong chế độ đăng ký
   });
   
   // State để hiển thị thông báo lỗi hoặc thành công
   const [message, setMessage] = useState('');
-  
   // State để xử lý trạng thái loading khi đang gọi API
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [showPassword, setShowPassword] = useState(false); // State để hiển thị/ẩn mật khẩu
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
   // Lấy các công cụ cần thiết từ hooks
   const navigate = useNavigate(); // Hook để chuyển hướng trang
   const { login } = useAuth();    // Hàm `login` từ AuthContext để cập nhật trạng thái toàn cục
@@ -53,7 +54,7 @@ function AuthPage() {
       e.preventDefault(); // Ngăn trình duyệt tải lại trang
       setIsLoading(true); // Bật trạng thái loading
       setMessage('');
-
+      const { fullName, email, password, confirmPassword } = formData;
       // Xác định endpoint API dựa trên chế độ (đăng nhập hay đăng ký)
       const endpoint = isLoginMode ? '/login' : '/register';
       const url = API_URL + endpoint;
@@ -63,6 +64,12 @@ function AuthPage() {
         ? { email: formData.email, password: formData.password } 
         : { fullName: formData.fullName, email: formData.email, password: formData.password };
 
+        if(!isLoginMode && password !== confirmPassword) {
+          setMessage('Passwords do not match. Please check again.');
+          setFormData({ ...formData, password: '', confirmPassword: '' });
+          setIsLoading(false);
+          return;
+        }
       try {
         const response = await axios.post(url, payload);
 
@@ -122,20 +129,47 @@ function AuthPage() {
             onChange={handleChange}
             required
           />
+          <div className="password-wrapper">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"} 
             name="password"
             placeholder="Type your password"
             value={formData.password}
             onChange={handleChange}
             required
-          />  
+          />
+            <i 
+              className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"}`}
+              onClick={() => setShowPassword(!showPassword)}
+            ></i>
+           </div>
+      
+          { !isLoginMode && (
+            <div className='password-wrapper'> 
+              <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+              <i 
+                className={`fa-solid ${showConfirmPassword ? "fa-eye-slash" : "fa-eye"}`}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              ></i>
+            </div>
+           
+          )
+
+          }
           
           {/* Hiển thị thông báo */}
           {message && <p className="auth-message">{message}</p>}
           
           {/* Nút submit có trạng thái loading và thay đổi text */}
           <button type="submit" disabled={isLoading}>
+            
             {isLoading ? 'Processing...' : (isLoginMode ? 'Đăng nhập' : 'Đăng ký')}
           </button>
         </form>
