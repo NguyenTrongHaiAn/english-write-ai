@@ -62,3 +62,26 @@
 }
 .forgot-password { display: block; margin-top: 15px; }
 .switch-auth { margin-top: 25px; }
+
+
+.password-wrapper {
+  position: relative; /* Bắt buộc để định vị icon con bên trong */
+  width: 100%;
+  margin-bottom: 15px; /* Giữ khoảng cách giống như các input khác */
+}
+
+
+.password-wrapper input {
+  margin-bottom: 0; /* Bỏ margin-bottom của input vì wrapper đã có */
+  padding-right: 45px; /* Tạo khoảng trống bên phải cho icon */
+}
+
+/* Định vị và tạo kiểu cho icon */
+.password-wrapper i {
+  position: absolute; /* Tách icon ra khỏi luồng và định vị nó */
+  top: 50%; /* Đặt icon ở giữa theo chiều dọc */
+  right: 15px; /* Cách lề phải 15px */
+  transform: translateY(-50%); /* Căn giữa icon một cách chính xác */
+  cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua */
+  color: #aaa; /* Cho icon màu xám nhẹ */
+}
