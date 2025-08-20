@@ -5,6 +5,7 @@
   align-items: center;
   padding-top: 80px;
   min-width: 95vw;
+  margin-top: 50px;
 }
 .auth-form {
   background: white;
@@ -24,15 +25,35 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+.auth-form h2{
+  margin-bottom: 0;
+}
 .auth-button {
   width: 100%;
-  padding: 12px;
-  background-color: #c23333;
+  display: inline-block; /* Quan trọng: Giúp padding và transform hoạt động đúng */
+  padding: 10px 30px;   /* Thêm padding để nút trông lớn và dễ bấm hơn */
+  background-color: #c24a3a;
   color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 4px; /* Điều chỉnh: Bo góc nhỏ hơn để hiện đại, đồng bộ với form */
+  font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none; /* Dành cho trường hợp nút là thẻ <a> */
+  cursor: pointer;
+  
+  /* Quan trọng nhất: Thêm transform và box-shadow vào transition */
+  transition: background-color 0.3s ease, 
+              transform 0.2s ease, 
+              box-shadow 0.3s ease;
+}
+.auth-button:hover{
+    background-color: #a03c2d; /* Điều chỉnh: Màu tối hơn một chút, giống form đăng ký */
+  color: white; /* Giữ màu trắng cho nhất quán */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Điều chỉnh: Giảm độ đậm của bóng */
+  
+  /* Hiệu ứng "nhấc" nút lên */
+   transform: translateX(0) translateY(-2px);
 }
 .forgot-password, .switch-auth a {
   color: #c23333;

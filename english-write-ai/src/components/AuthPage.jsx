@@ -135,8 +135,8 @@ function AuthPage() {
           {message && <p className="auth-message">{message}</p>}
           
           {/* Nút submit có trạng thái loading và thay đổi text */}
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Processing...' : (isLoginMode ? 'Đăng nhập' : 'Đăng ký')}
+          <button className="auth-button" type="submit" disabled={isLoading}>
+            {isLoading ? 'Processing...' : (isLoginMode ? 'Log in' : 'Sign in')}
           </button>
         </form>
        
