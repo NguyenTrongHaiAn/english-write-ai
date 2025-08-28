@@ -1,22 +1,24 @@
+// File: routes/authRoutes.js
+
 const express = require('express');
 const router = express.Router();
 
-//get registerUser directly from the object that require() returns
-const {
-  registerUser,
-  loginUser,
-  // forgotPassword ,
-  // logoutUser, 
+// 1. Import toàn bộ controller
+const authController = require('../controllers/authController.js');
 
-} = require('../controllers/authController');
+// 2. Sử dụng các hàm từ object controller đã import
+// Đảm bảo authController.registerUser, authController.loginUser, authController.verifyEmail 
+// đều là các hàm đã được export từ file authController.js
 
-router.post('/register', registerUser);
-//When an HTTP POST request is sent to the /register URL, Express calls the registerUser function to handle the request.
+// Route để đăng ký
+router.post('/register', authController.registerUser);
 
+// Route để đăng nhập
+router.post('/login', authController.loginUser);
 
-router.post('/login', loginUser);
-
-// router.post('/forgot-password', forgotPassword);
+// Route để xác thực email
+router.get('/verify-email/:token', authController.verifyEmail);
+router.post('/forgot-password', authController.forgotPassword);
+router.post('/reset-password/:token', authController.resetPassword);
 
 module.exports = router;
-// Export the router so it can be used in other files

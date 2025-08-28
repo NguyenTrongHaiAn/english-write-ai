@@ -83,7 +83,7 @@ function AuthPage() {
           navigate('/profile'); 
         } else if (!isLoginMode) { 
           // Xử lý khi đăng ký thành công
-          setMessage(response.data.message || 'Đăng ký thành công! Vui lòng đăng nhập.');
+          setMessage(response.data.message);
           setIsLoginMode(true); // Tự động chuyển sang form đăng nhập
         }
 
@@ -100,6 +100,33 @@ function AuthPage() {
           setIsLoading(false);
       }
   };
+  //HAM XU LY QUEN MAT KHAU
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    if(!formData.email) {
+       
+      setMessage('Please enter your email to reset password.');
+      return;
+    }
+    setIsLoading(true);
+    setMessage('');
+      
+      try {
+        const url = API_URL + '/forgot-password';
+        const payload = { email: formData.email, };
+        const response = await axios.post(url, payload);
+        setMessage(response.data.message);
+      } catch (error) {
+        if (error.response && error.response.data && error.response.data.message) {
+          setMessage(error.response.data.message);
+        } else {
+          setMessage('An error occurred, please try again later.');
+        }
+        console.error(error);
+      }finally{setIsLoading(false);}
+
+    
+  }
 
   return (
     <div className="auth-container">
@@ -179,6 +206,10 @@ function AuthPage() {
           <a href="#" onClick={handleSwitchMode}>
             {isLoginMode ? 'Register' : 'Log In'}
           </a>
+          
+        </div>
+        <div className="switch-auth">
+          <a className="switch-auth" onClick={handleForgotPassword} >{isLoginMode ? 'Forgot Password?' : ''}</a>
         </div>
       </div>
     </div>

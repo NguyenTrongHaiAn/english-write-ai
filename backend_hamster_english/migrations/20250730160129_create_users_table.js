@@ -1,3 +1,5 @@
+const e = require("cors");
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }

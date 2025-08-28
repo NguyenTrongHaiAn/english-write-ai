@@ -2,14 +2,14 @@
 import {  Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx'; // Import AuthProvider để bọc ứng dụng
 
-
+import VerifyEmailPage from './components/VerifyEmailPage.jsx';
 import Navbar from './components/Navbar.jsx';
 import LandingPage from './components/landingpage.jsx';
 import AuthPage from './components/AuthPage.jsx';
 import WritingPage from './components/WritingPage.jsx'; 
 // --- THÊM VÀO: Import trang cá nhân (ProfilePage) ---
 import ProfilePage from './pages/ProfilePage.jsx';
-
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
 
 import Getstartpage from './components/getstartpage.jsx'; // Trang chủ của layout
 
@@ -39,7 +39,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<AuthPage />} />
             <Route path="/writing/:challengeId" element={<WritingPage />} />
-
+            <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
             {/* ---- THÊM VÀO: ROUTE CHO TRANG CÁ NHÂN ĐƯỢC BẢO VỆ ---- */}
             <Route
               path="/profile"
@@ -54,7 +54,7 @@ function App() {
             {/* --- THÊM VÀO (Tùy chọn): Route để xử lý các đường dẫn không hợp lệ --- */}
             {/* Nếu người dùng truy cập một URL không tồn tại, họ sẽ được điều hướng về trang chủ. */}
             <Route path="*" element={<Navigate to="/" />} />
-
+            <Route path="/reset-password/:token" element={<ResetPasswordPage />} /> 
           </Routes>
         </main>
       
