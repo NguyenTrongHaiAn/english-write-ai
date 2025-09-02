@@ -2,46 +2,48 @@
 
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middleware/authMiddleware');
 
-// --- ĐÂY LÀ THAY ĐỔI QUAN TRỌNG ---
-// Import Knex thay vì Mongoose Model
+// Import các công cụ cần thiết
+const authMiddleware = require('../middleware/authMiddleware');
 const knexConfig = require('../knexfile'); 
 const knex = require('knex')(knexConfig.development);
-// ------------------------------------
 
-
-// @route   GET /api/user/profile
-// @desc    Lấy thông tin của người dùng đã đăng nhập
-// @access  Private
+/**
+ * @route   GET /api/users/profile
+ * @desc    Lấy thông tin của người dùng đã được xác thực (đang đăng nhập)
+ * @access  Private (Yêu cầu token)
+ */
 router.get('/profile', authMiddleware, async (req, res) => {
     try {
-        // req.user.id bây giờ đã có giá trị đúng từ authMiddleware
-        const userId = req.user.id;
+        // Middleware `authMiddleware` đã giải mã token và gán thông tin vào `req.user`.
+        // Dữ liệu trong token của chúng ta là { userId: ..., email: ... }
+        const userId = req.user.userId; 
 
-        // --- SỬ DỤNG KNEX ĐỂ TRUY VẤN ---
+        // Truy vấn database để lấy thông tin người dùng bằng ID
         const user = await knex('users')
             .where({ id: userId })
-            .select('id', 'full_name', 'email') // Chọn các cột muốn trả về, loại bỏ cột 'password'
-            .first(); // .first() để lấy về 1 object thay vì 1 array
-        // ------------------------------------
+            .select('id', 'full_name', 'email') // Chỉ chọn các cột an toàn để trả về
+            .first(); // .first() để đảm bảo chỉ nhận về một object, không phải một mảng
 
+        // Nếu không tìm thấy người dùng (trường hợp hiếm, ví dụ user vừa bị xóa)
         if (!user) {
-            return res.status(404).json({ message: 'Không tìm thấy người dùng.' });
+            return res.status(404).json({ message: 'User not found.' });
         }
 
-        // Đổi tên 'full_name' thành 'fullName' cho nhất quán (tùy chọn)
+        // Định dạng lại dữ liệu trả về cho nhất quán với Frontend
         const userProfile = {
             id: user.id,
-            username: user.full_name, // Đổi tên để khớp với frontend
+            fullName: user.full_name,
             email: user.email
         };
 
-        res.json(userProfile);
+        // Trả về dữ liệu trong một object có key là 'user',
+        // khớp với cách Frontend đang đọc: response.data.user
+        res.status(200).json({ user: userProfile });
 
     } catch (error) {
-        console.error('Lỗi khi lấy thông tin người dùng:', error.message);
-        res.status(500).send('Lỗi Server');
+        console.error('Error fetching user profile:', error);
+        res.status(500).json({ message: 'Server error while fetching profile.' });
     }
 });
 

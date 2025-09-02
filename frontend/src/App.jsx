@@ -1,7 +1,6 @@
 // src/App.jsx
-import {  Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx'; // Import AuthProvider để bọc ứng dụng
-
 import VerifyEmailPage from './components/VerifyEmailPage.jsx';
 import Navbar from './components/Navbar.jsx';
 import LandingPage from './components/landingpage.jsx';

@@ -1,28 +1,34 @@
 // File: middleware/authMiddleware.js
 
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 const authMiddleware = (req, res, next) => {
-    const authHeader = req.header('Authorization');
+    // 1. Lấy token từ header 'Authorization'
+    const authHeader = req.headers['authorization'];
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return res.status(401).json({ message: 'Xác thực thất bại, không tìm thấy token.' });
+    // Header thường có dạng: "Bearer TOKEN_CUA_BAN"
+    const token = authHeader && authHeader.split(' ')[1];
+
+    // 2. Kiểm tra xem token có tồn tại không
+    if (token == null) {
+        // 401 Unauthorized: Yêu cầu thiếu thông tin xác thực
+        return res.status(401).json({ message: 'No token, authorization denied.' });
     }
 
-    try {
-        const token = authHeader.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // 3. Xác thực và giải mã token
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        if (err) {
+            // 403 Forbidden: Token không hợp lệ hoặc đã hết hạn
+            return res.status(403).json({ message: 'Token is not valid.' });
+        }
 
-        // --- ĐÂY LÀ THAY ĐỔI QUAN TRỌNG ---
-        // Đọc `userId` từ payload và tạo object `req.user`
-        req.user = { id: decoded.userId }; 
-        // ------------------------------------
-        
+        // 4. Nếu token hợp lệ, gán payload đã giải mã vào req.user
+        // `user` ở đây sẽ là object { userId: ..., email: ... } mà chúng ta đã tạo
+        req.user = user;
+
+        // 5. Cho phép request đi tiếp đến bước tiếp theo (controller)
         next();
-    } catch (error) {
-        return res.status(401).json({ message: 'Xác thực thất bại, token không hợp lệ.' });
-    }
+    });
 };
 
 module.exports = authMiddleware;
